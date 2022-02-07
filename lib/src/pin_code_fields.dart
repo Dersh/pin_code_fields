@@ -190,8 +190,11 @@ class PinCodeTextField extends StatefulWidget {
   /// Makes the pin cells readOnly
   final bool readOnly;
 
+  final String? name;
+
   PinCodeTextField({
     Key? key,
+    this.name,
     required this.appContext,
     required this.length,
     this.controller,
@@ -250,7 +253,8 @@ class PinCodeTextField extends StatefulWidget {
     /// Default create internal [AutofillGroup]
     this.useExternalAutoFillGroup = false,
     this.scrollPadding = const EdgeInsets.all(20),
-  })  : assert(obscuringCharacter.isNotEmpty);
+  })  : assert(obscuringCharacter.isNotEmpty),
+        super(key: key);
 
   @override
   _PinCodeTextFieldState createState() => _PinCodeTextFieldState();
@@ -700,8 +704,12 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
 
   @override
   Widget build(BuildContext context) {
+    Key? key;
+    if (widget.name?.isNotEmpty ?? false) {
+      key = Key(widget.name!);
+    }
     var textField = TextFormField(
-      key: widget.key,
+      key: key,
       textInputAction: widget.textInputAction,
       controller: _textEditingController,
       focusNode: _focusNode,
