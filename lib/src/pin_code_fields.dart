@@ -250,8 +250,7 @@ class PinCodeTextField extends StatefulWidget {
     /// Default create internal [AutofillGroup]
     this.useExternalAutoFillGroup = false,
     this.scrollPadding = const EdgeInsets.all(20),
-  })  : assert(obscuringCharacter.isNotEmpty),
-        super(key: key);
+  })  : assert(obscuringCharacter.isNotEmpty);
 
   @override
   _PinCodeTextFieldState createState() => _PinCodeTextFieldState();
@@ -702,6 +701,7 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
   @override
   Widget build(BuildContext context) {
     var textField = TextFormField(
+      key: widget.key,
       textInputAction: widget.textInputAction,
       controller: _textEditingController,
       focusNode: _focusNode,
