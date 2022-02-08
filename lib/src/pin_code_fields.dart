@@ -771,12 +771,12 @@ class _PinCodeTextFieldState extends State<PinCodeTextField>
             AbsorbPointer(
               // this is a hidden textfield under the pin code fields.
               absorbing: true, // it prevents on tap on the text field
-              child: widget.useExternalAutoFillGroup
-                  ? textField
-                  : AutofillGroup(
-                      onDisposeAction: widget.onAutoFillDisposeAction,
-                      child: textField,
-                    ),
+              child: textField
+                  // ? textField
+                  // : AutofillGroup(
+                  //     onDisposeAction: widget.onAutoFillDisposeAction,
+                  //     child: textField,
+                  //   ),
             ),
             Positioned(
               top: 0,
